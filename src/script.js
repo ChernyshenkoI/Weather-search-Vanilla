@@ -30,6 +30,8 @@ document.querySelector("#temperature").innerHTML=Math.round(responce.data.main.t
 document.querySelector("#humidity").innerHTML=responce.data.main.humidity
 document.querySelector("#wind").innerHTML=Math.round(responce.data.wind.speed)
 document.querySelector("#description").innerHTML=responce.data.weather[0].main
+let iconElement=document.querySelector("#icon")
+iconElement.setAttribute("src", `http://openweathermap.org/img/wn/10d@2x.png`)
 }
 
 function searchCity(city) {
@@ -50,9 +52,6 @@ function searchCity(city) {
     navigator.geolocation.getCurrentPosition(searchLocation);
   }
 
-let currentLocationButton = document.querySelector("#current-location-button");
-currentLocationButton.addEventListener("click", getCurrentLocation);
-
 function handleSubmit (event){
     event.preventDefault();
     let units = "metric"
@@ -68,3 +67,4 @@ let searchForm = document.querySelector("#search-form")
 searchForm.addEventListener("submit", handleSubmit)
 
 searchCity();
+
